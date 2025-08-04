@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List Web App</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+      color: #333;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #2C3E50;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 20px;
+      gap: 30px;
+    }
+
+    .form-section, .list-section {
+      background: #fff;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      max-width: 350px;
+      width: 100%;
+      transition: transform 0.3s;
+    }
+
+    .form-section:hover, .list-section:hover {
+      transform: translateY(-5px);
+    }
+
+    .form-section input, .form-section textarea {
+      width: 100%;
+      padding: 12px 10px;
+      margin-bottom: 15px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+
+    .form-section input:focus, .form-section textarea:focus {
+      border-color: #3498db;
+      outline: none;
+    }
+
+    .form-section button {
+      width: 100%;
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .form-section button:hover {
+      background: #2980b9;
+    }
+
+    .list-section table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .list-section th, .list-section td {
+      text-align: left;
+      padding: 12px 10px;
+      font-size: 14px;
+    }
+
+    .list-section th {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .list-section tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .delete-btn {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .delete-btn:hover {
+      background: #c0392b;
+    }
+
+    @media(max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .form-section, .list-section {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>To-Do List Web App</header>
+  <div class="container">
+    <div class="form-section">
+      <form id="taskForm">
+        <input type="text" id="title" placeholder="Enter Task Title" required />
+        <textarea id="description" placeholder="Enter Task Description" rows="5" required></textarea>
+        <button type="submit">Add Task</button>
+      </form>
+    </div>
+
+    <div class="list-section">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="taskList"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    const taskForm = document.getElementById('taskForm');
+    const taskList = document.getElementById('taskList');
+
+    taskForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value.trim();
+      const description = document.getElementById('description').value.trim();
+
+      if (title === "" || description === "") {
+        return;
+      }
+
+      const row = document.createElement('tr');
+
+      const titleCell = document.createElement('td');
+      titleCell.textContent = title;
+      row.appendChild(titleCell);
+
+      const descCell = document.createElement('td');
+      descCell.textContent = description;
+      row.appendChild(descCell);
+
+      const deleteCell = document.createElement('td');
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'X';
+      deleteBtn.classList.add('delete-btn');
+      deleteBtn.addEventListener('click', function() {
+        taskList.removeChild(row);
+      });
+      deleteCell.appendChild(deleteBtn);
+      row.appendChild(deleteCell);
+
+      taskList.appendChild(row);
+
+      // Clear form
+      document.getElementById('title').value = '';
+      document.getElementById('description').value = '';
+    });
+  </script>
+</body>
+</html>

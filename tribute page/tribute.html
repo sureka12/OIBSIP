@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malala Yousafzai Tribute</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #5d6867;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            display: flex;
+            background-color: #75c3c2;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(116, 239, 239, 0.986);
+            overflow: hidden;
+            max-width: 800px;
+        }
+
+        .card img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 30px;
+            border: 4px solid #fff;
+        }
+
+        .card-content {
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-content h1 {
+            font-size: 2.5em;
+            margin: 0 0 20px 0;
+            color: #E8F6EF;
+        }
+
+        .card-content p {
+            line-height: 1.6;
+            font-size: 1em;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .card img {
+                margin: 20px 0 0 0;
+            }
+
+            .card-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <!-- Malala Yousafzai image -->
+            <img src="https://static.euronews.com/articles/stories/07/54/25/12/1440x810_cmsv2_3b509b56-12f7-586e-bff6-96c0c71833ea-7542512.jpg" alt="Malala Yousafzai">
+            <div class="card-content">
+                <h1>Malala Yousafzai</h1>
+                <p>Malala Yousafzai is a Pakistani education activist and the youngest Nobel Prize laureate. Born in 1997, Malala defied the Taliban in Pakistan and demanded that girls be allowed to receive an education. In 2012, she survived an assassination attempt by a Taliban gunman and continued her advocacy with even more determination. Malala co-founded the Malala Fund and continues to be a global symbol for girls’ rights and education.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
